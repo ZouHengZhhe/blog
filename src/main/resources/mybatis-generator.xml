@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 引入配置文件，只能是properties -->
+    <!--<properties resource="application.properties"/>-->
+
+    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3Simple" >
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+
+        <!-- 注释 -->
+        <commentGenerator >
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://49.235.46.126:33066/blog?serverTimezone=UTC"
+                userId="root"
+                password="yq5yS#d80BCSi4D!" />
+
+        <javaModelGenerator targetPackage="com.zhhe.blog.domain" targetProject="src/main/java"></javaModelGenerator>
+        <javaClientGenerator targetPackage="com.zhhe.blog.dao" targetProject="src/main/java" type="ANNOTATEDMAPPER">
+            <!--可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查-->
+            <property name="BaseMapper" value=""/>
+        </javaClientGenerator>
+
+
+        <!-- 生成所有表 -->
+        <!--<table tableName="user" >-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="role" >-->
+            <!--<generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="user" catalog="blog"></table>
+        <table tableName="role"></table>
+        <table tableName="user_role"></table>
+        <table tableName="permission"></table>
+        <table tableName="role_permission"></table>
+
+    </context>
+</generatorConfiguration>
